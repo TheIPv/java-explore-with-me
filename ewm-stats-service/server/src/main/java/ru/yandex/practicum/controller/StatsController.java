@@ -11,7 +11,6 @@ import ru.yandex.practicum.dto.ViewStatsDto;
 import ru.yandex.practicum.exception.NotValidException;
 import ru.yandex.practicum.service.StatsService;
 
-import javax.xml.bind.ValidationException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class StatsController {
                                                   @RequestParam(required = false) List<String> uris,
                                                   @RequestParam(defaultValue = "false") Boolean unique) {
         log.info("Received GET /stats request");
-        if(start.isAfter(end)) {
+        if (start.isAfter(end)) {
             throw new NotValidException("end date is before start date");
         }
         return new ResponseEntity<>(service.get(start, end, uris, unique), HttpStatus.OK);

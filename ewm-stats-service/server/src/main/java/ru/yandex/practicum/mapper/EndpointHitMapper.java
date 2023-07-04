@@ -13,6 +13,7 @@ public class EndpointHitMapper {
                 .timestamp(endpointHit.getTimestamp())
                 .build();
     }
+
     public static EndpointHit toEndpointHit(EndpointHitDto endpointHitDto) {
         return EndpointHit.builder()
                 .app(endpointHitDto.getApp())

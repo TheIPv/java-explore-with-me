@@ -11,7 +11,6 @@ import ru.yandex.practicum.repository.StatsRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -23,14 +22,14 @@ public class StatsServiceImpl implements StatsService {
 
     @Override
     public EndpointHitDto save(EndpointHitDto endpointHitDto) {
-        return EndpointHitMapper.toEndpointHitDto(statsRepository.
-                save(EndpointHitMapper.toEndpointHit(endpointHitDto)));
+        return EndpointHitMapper.toEndpointHitDto(statsRepository
+                .save(EndpointHitMapper.toEndpointHit(endpointHitDto)));
     }
 
     @Override
     public List<ViewStatsDto> get(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique) {
         PageRequest pageable = PageRequest.of(0, 10);
-        if(unique) {
+        if (unique) {
             return statsRepository.getUniqueViewStats(start, end, uris, pageable)
                     .stream()
                     .map(ViewStatsMapper::toViewStatsDto)
