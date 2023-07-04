@@ -1,6 +1,7 @@
 package ru.yandex.practicum.mapper;
 
 import ru.yandex.practicum.dto.EndpointHitDto;
+import ru.yandex.practicum.dto.ViewStatsDto;
 import ru.yandex.practicum.model.EndpointHit;
 
 public class EndpointHitMapper {
@@ -22,4 +23,5 @@ public class EndpointHitMapper {
                 .timestamp(endpointHitDto.getTimestamp())
                 .build();
     }
+
 }
