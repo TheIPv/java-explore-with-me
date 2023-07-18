@@ -14,13 +14,13 @@ import javax.transaction.Transactional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class CategoryAdminServiceImpl implements CategoryAdminService{
+public class CategoryAdminServiceImpl implements CategoryAdminService {
 
     private final CategoryRepository categoryRepository;
 
     @Override
     @Transactional
-    public CategoryDto addCategory(NewCategoryDto newCategoryDto){
+    public CategoryDto addCategory(NewCategoryDto newCategoryDto) {
         return CategoryMapper.toCategoryDtoFromCategory(categoryRepository
                 .save(CategoryMapper.toCategoryFromNewCategoryDto(newCategoryDto)));
     }
