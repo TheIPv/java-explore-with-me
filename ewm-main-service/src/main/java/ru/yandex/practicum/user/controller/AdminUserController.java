@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.user.dto.UserDto;
@@ -33,12 +32,14 @@ public class AdminUserController {
         log.info("Received GET /admin/users request");
         return userService.getUsers(ids, PageRequest.of(from / size, size));
     }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     UserDto addUser(@Valid @RequestBody NewUserRequest newUserRequest) {
         log.info("Received POST /admin/users request");
         return userService.addUser(newUserRequest);
     }
+
     @DeleteMapping("/{userId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteUserById(@PathVariable Long userId) {

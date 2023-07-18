@@ -9,6 +9,7 @@ import lombok.*;
 public class RequestStats {
     Long eventId;
     Long confirmedRequests;
+
     public RequestStats(Long eventId, Long confirmedRequests) {
         this.eventId = eventId;
         this.confirmedRequests = confirmedRequests;

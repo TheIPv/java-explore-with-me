@@ -6,9 +6,7 @@ import ru.yandex.practicum.event.dto.EventRequestStatusUpdateRequest;
 import ru.yandex.practicum.event.dto.EventRequestStatusUpdateResult;
 import ru.yandex.practicum.event.dto.ParticipationRequestDto;
 import ru.yandex.practicum.event.enums.EventState;
-import ru.yandex.practicum.event.enums.RequestStatusAction;
 import ru.yandex.practicum.event.enums.RequestStatusState;
-import ru.yandex.practicum.event.mapper.EventMapper;
 import ru.yandex.practicum.event.mapper.RequestMapper;
 import ru.yandex.practicum.event.model.Event;
 import ru.yandex.practicum.event.model.Request;
@@ -168,12 +166,14 @@ public class RequestPrivateServiceImpl implements RequestPrivateService {
         requests.forEach(request -> request.setStatus(status));
         return requestRepository.saveAll(requests);
     }
+
     private void checkIsNewLimitGreaterOld(Long newLimit, Integer eventParticipantLimit) {
         if (eventParticipantLimit != 0 && (newLimit > eventParticipantLimit)) {
             throw new ForbiddenException(String.format("Достигнут лимит подтвержденных запросов на участие: %d",
                     eventParticipantLimit));
         }
     }
+
     private void checkUserIsOwner(Long id, Long userId) {
         if (!Objects.equals(id, userId)) {
             throw new ForbiddenException("Пользователь не является владельцем.");

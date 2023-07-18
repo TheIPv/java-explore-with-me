@@ -10,9 +10,13 @@ import java.util.List;
 
 public interface RequestPrivateService {
     List<ParticipationRequestDto> getEventRequestsByUser(Long userId);
+
     ParticipationRequestDto add(Long userId, Long eventId);
+
     ParticipationRequestDto cancel(Long userId, Long requestId);
+
     List<ParticipationRequestDto> getEventRequestsByOwner(Long ownerId, Long eventId);
+
     EventRequestStatusUpdateResult patchEventRequestByOwner(Long ownerId, Long eventId,
                                                             EventRequestStatusUpdateRequest eventRequestStatusUpdateRequest);
 }

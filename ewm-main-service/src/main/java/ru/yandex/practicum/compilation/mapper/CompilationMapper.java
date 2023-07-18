@@ -18,6 +18,7 @@ public class CompilationMapper {
                 .events(events)
                 .build();
     }
+
     public static CompilationDto toCompilationDto(Compilation compilation, List<EventShortDto> eventsShortDto) {
         return CompilationDto
                 .builder()

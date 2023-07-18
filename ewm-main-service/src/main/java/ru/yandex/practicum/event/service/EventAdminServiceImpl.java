@@ -21,8 +21,6 @@ import ru.yandex.practicum.exception.NotValidException;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -35,10 +33,11 @@ public class EventAdminServiceImpl implements EventAdminService {
     private final LocationRepository locationRepository;
     private final CategoryPublicService categoryService;
     private final MainStatsService mainStatsService;
+
     @Override
     public List<EventFullDto> getEvents(List<Long> users, List<EventState> states, List<Long> categories,
                                         LocalDateTime rangeStart, LocalDateTime rangeEnd, Integer from, Integer size) {
-        if(rangeStart != null && rangeEnd != null && rangeStart.isAfter(rangeEnd)) {
+        if (rangeStart != null && rangeEnd != null && rangeStart.isAfter(rangeEnd)) {
             throw new NotValidException("Error: rageStart date is after end rageEnd");
         }
 
@@ -66,7 +65,7 @@ public class EventAdminServiceImpl implements EventAdminService {
     @Override
     @Transactional
     public EventFullDto updateEvent(Long eventId, UpdateEventAdminRequest updateEventAdminRequest) {
-        if(updateEventAdminRequest.getEventDate() != null && updateEventAdminRequest
+        if (updateEventAdminRequest.getEventDate() != null && updateEventAdminRequest
                 .getEventDate().isBefore(LocalDateTime.now())) {
             throw new NotValidException("Error: Event date can't be earlier than now");
         }
@@ -130,6 +129,7 @@ public class EventAdminServiceImpl implements EventAdminService {
 
         return EventMapper.toEventFullDto(eventRepository.save(event), 0L, 0L);
     }
+
     private void checkNewEventDate(LocalDateTime newEventDate, LocalDateTime minTimeBeforeEventStart) {
         if (newEventDate != null && newEventDate.isBefore(minTimeBeforeEventStart)) {
             throw new ForbiddenException(String.format("Field: eventDate. Error: остается слишком мало времени для " +

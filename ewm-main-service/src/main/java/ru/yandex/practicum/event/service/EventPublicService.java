@@ -15,7 +15,10 @@ public interface EventPublicService {
                                           Integer from, Integer size, HttpServletRequest request);
 
     EventFullDto getEvent(Long id, HttpServletRequest request);
+
     Event getEventById(Long eventId);
+
     List<Event> getEventsByIds(List<Long> eventsId);
+
     List<EventShortDto> toEventsShortDto(List<Event> events);
 }

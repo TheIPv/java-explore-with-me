@@ -1,7 +1,6 @@
 package ru.yandex.practicum.user.model;
 
 import lombok.*;
-import org.springframework.data.annotation.ReadOnlyProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

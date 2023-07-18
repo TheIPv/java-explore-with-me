@@ -20,7 +20,7 @@ public class CategoryAdminServiceImpl implements CategoryAdminService{
 
     @Override
     @Transactional
-    public CategoryDto addCategory(NewCategoryDto newCategoryDto) {
+    public CategoryDto addCategory(NewCategoryDto newCategoryDto){
         return CategoryMapper.toCategoryDtoFromCategory(categoryRepository
                 .save(CategoryMapper.toCategoryFromNewCategoryDto(newCategoryDto)));
     }

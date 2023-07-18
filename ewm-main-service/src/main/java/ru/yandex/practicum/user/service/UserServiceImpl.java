@@ -11,7 +11,6 @@ import ru.yandex.practicum.user.model.User;
 import ru.yandex.practicum.user.repository.UserRepository;
 
 import javax.transaction.Transactional;
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 

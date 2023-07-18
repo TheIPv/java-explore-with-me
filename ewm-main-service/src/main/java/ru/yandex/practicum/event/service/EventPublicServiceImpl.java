@@ -34,7 +34,7 @@ public class EventPublicServiceImpl implements EventPublicService {
                                          LocalDateTime rangeEnd, Boolean onlyAvailable, EventSortType sort,
                                          Integer from, Integer size, HttpServletRequest request) {
 
-        if(rangeStart != null && rangeEnd != null && rangeStart.isAfter(rangeEnd)) {
+        if (rangeStart != null && rangeEnd != null && rangeStart.isAfter(rangeEnd)) {
             throw new NotValidException("Error: rangeStart date is after end rangeEnd");
         }
 
@@ -73,7 +73,7 @@ public class EventPublicServiceImpl implements EventPublicService {
         eventRepository.flush();
 
         Long views = mainStatsService.getViews(List.of(event)).get(event.getId());
-        if(views == null) {
+        if (views == null) {
             views = Long.valueOf(1);
         }
 
