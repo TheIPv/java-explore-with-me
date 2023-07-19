@@ -58,8 +58,8 @@ public class EventAdminServiceImpl implements EventAdminService {
         return  events
                 .stream()
                 .map(s -> EventMapper.toEventFullDto(
-                        s, requestStats.get(s.getId()) == null ? 0L: requestStats.get(s.getId())
-                        , views.get(s.getId())))
+                        s, requestStats.get(s.getId()) == null ? 0L : requestStats.get(s.getId()),
+                        views.get(s.getId())))
                 .collect(Collectors.toList());
     }
 

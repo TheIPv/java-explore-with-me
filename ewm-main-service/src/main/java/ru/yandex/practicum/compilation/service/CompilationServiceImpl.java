@@ -114,7 +114,7 @@ public class CompilationServiceImpl implements CompilationService {
     }
 
     private void existById(Long id) {
-        if(!compilationRepository.existsById(id)) {
+        if (!compilationRepository.existsById(id)) {
             throw new NotFoundException("Compilation with this id doesn't exist");
         }
     }

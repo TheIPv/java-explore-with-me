@@ -9,8 +9,6 @@ import ru.yandex.practicum.category.mapper.CategoryMapper;
 import ru.yandex.practicum.category.model.Category;
 import ru.yandex.practicum.category.repository.CategoryRepository;
 
-import javax.transaction.Transactional;
-
 @Service
 @RequiredArgsConstructor
 @Slf4j
