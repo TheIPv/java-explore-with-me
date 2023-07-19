@@ -1,6 +1,7 @@
 package ru.yandex.practicum.compilation.model;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import ru.yandex.practicum.event.model.Event;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "compilations")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
 @NoArgsConstructor

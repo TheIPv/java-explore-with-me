@@ -1,6 +1,7 @@
 package ru.yandex.practicum.user.model;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity(name = "users")
 @Getter
 @Setter

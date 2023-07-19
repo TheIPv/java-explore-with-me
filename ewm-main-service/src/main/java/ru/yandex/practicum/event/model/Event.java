@@ -1,6 +1,7 @@
 package ru.yandex.practicum.event.model;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import ru.yandex.practicum.category.model.Category;
@@ -10,6 +11,7 @@ import ru.yandex.practicum.user.model.User;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity(name = "events")
 @Getter
 @Setter

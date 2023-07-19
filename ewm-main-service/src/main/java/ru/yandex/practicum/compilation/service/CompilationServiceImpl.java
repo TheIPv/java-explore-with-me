@@ -65,20 +65,14 @@ public class CompilationServiceImpl implements CompilationService {
 
     @Override
     public void deleteById(Long compId) {
-        getCompilationById(compId);
-
+        existById(compId);
         compilationRepository.deleteById(compId);
     }
 
     @Override
     public List<CompilationDto> getAll(Boolean pinned, Pageable pageable) {
-        List<Compilation> compilations;
-
-        if (pinned == null) {
-            compilations = compilationRepository.findAll(pageable).toList();
-        } else {
-            compilations = compilationRepository.findAllByPinned(pinned, pageable);
-        }
+        List<Compilation> compilations = compilationRepository
+                .findAllByFilter(pinned, pageable);
 
         Set<Event> uniqueEvents = new HashSet<>();
         compilations.forEach(compilation -> uniqueEvents.addAll(compilation.getEvents()));
@@ -110,12 +104,18 @@ public class CompilationServiceImpl implements CompilationService {
 
     private void checkSize(List<Event> events, List<Long> eventsIdToUpdate) {
         if (events.size() != eventsIdToUpdate.size()) {
-            throw new NotFoundException("Некоторые события не найдены.");
+            throw new NotFoundException("Some events wasn't found");
         }
     }
 
     private Compilation getCompilationById(Long id) {
         return compilationRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Подборки с таким id не существует."));
+                .orElseThrow(() -> new NotFoundException("Compilation with this id doesn't exist"));
+    }
+
+    private void existById(Long id) {
+        if(!compilationRepository.existsById(id)) {
+            throw new NotFoundException("Compilation with this id doesn't exist");
+        }
     }
 }

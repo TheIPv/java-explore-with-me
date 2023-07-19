@@ -3,6 +3,7 @@ package ru.yandex.practicum.event.mapper;
 import ru.yandex.practicum.event.dto.ParticipationRequestDto;
 import ru.yandex.practicum.event.model.Request;
 
+
 public class RequestMapper {
     public static ParticipationRequestDto toParticipationRequestDto(Request request) {
         return ParticipationRequestDto.builder()

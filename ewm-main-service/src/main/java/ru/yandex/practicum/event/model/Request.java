@@ -1,12 +1,14 @@
 package ru.yandex.practicum.event.model;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import ru.yandex.practicum.event.enums.RequestStatusState;
 import ru.yandex.practicum.user.model.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity(name = "requests")
 @Getter
 @Setter
