@@ -1,8 +1,12 @@
 package ru.yandex.practicum.mapper;
 
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
 import ru.yandex.practicum.dto.EndpointHitDto;
 import ru.yandex.practicum.model.EndpointHit;
 
+@RequiredArgsConstructor
+@Builder
 public class EndpointHitMapper {
     public static EndpointHitDto toEndpointHitDto(EndpointHit endpointHit) {
         return EndpointHitDto.builder()
