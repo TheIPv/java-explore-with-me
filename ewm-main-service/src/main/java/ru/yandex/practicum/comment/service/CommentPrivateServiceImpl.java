@@ -60,7 +60,7 @@ public class CommentPrivateServiceImpl implements CommentPrivateService {
                 .orElseThrow(() -> new NotFoundException("Comment with ID " + commentId
                         + "wasn't found"));
 
-        if (comment.getAuthor().getId() != userId) {
+        if (comment.getAuthor().getId().equals(userId)) {
             throw new ForbiddenException("User with ID " + commentId
                     + " isn't author of comment with ID" + commentId);
         }
