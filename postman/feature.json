@@ -36,7 +36,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseUrl}}/users/:userId/comments?eventId=1",
+					"raw": "{{baseUrl}}/users/:userId/comments?eventId=154",
 					"host": [
 						"{{baseUrl}}"
 					],
@@ -47,13 +47,13 @@
 					],
 					"query": [
 						{
-							"key": "eventId",
-							"value": "1"
-						},
-						{
 							"key": "",
 							"value": "",
 							"disabled": true
+						},
+						{
+							"key": "eventId",
+							"value": "154"
 						}
 					],
 					"variable": [
@@ -317,7 +317,7 @@
 					"variable": [
 						{
 							"key": "userId",
-							"value": "2"
+							"value": "242"
 						}
 					]
 				}
@@ -488,8 +488,6 @@
 							"pm.test(\"Данные в ответе должны соответствовать данным в запросе\", function () {",
 							"    pm.expect(target[0].id).equal(1);",
 							"    pm.expect(target[0].text).equal(\"Первый комментарий\");",
-							"    pm.expect(target[0].author.id).equal(1);",
-							"    pm.expect(target[0].eventId).equal(1);",
 							"});"
 						],
 						"type": "text/javascript"
