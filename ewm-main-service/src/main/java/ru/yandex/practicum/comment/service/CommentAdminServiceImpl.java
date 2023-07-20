@@ -8,13 +8,13 @@ import ru.yandex.practicum.exception.NotFoundException;
 
 @Service
 @RequiredArgsConstructor
-public class CommentAdminServiceImpl implements CommentAdminService{
+public class CommentAdminServiceImpl implements CommentAdminService {
 
     private final CommentRepository commentRepository;
 
     @Override
     public void delete(Long commentId) {
-        if(!commentRepository.existsById(commentId)) {
+        if (!commentRepository.existsById(commentId)) {
             throw new NotFoundException("Comment with ID " + commentId + " wasn't found");
         }
         commentRepository.deleteById(commentId);

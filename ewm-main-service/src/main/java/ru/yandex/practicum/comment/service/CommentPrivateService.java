@@ -8,7 +8,10 @@ import java.util.List;
 
 public interface CommentPrivateService {
     List<CommentDto> get(Long userId, PageRequest pageable);
+
     CommentDto create(Long userId, Long eventId, NewCommentDto newCommentDto);
+
     CommentDto update(Long userId, Long commentId, NewCommentDto newCommentDto);
+
     void delete(Long userId, Long commentId);
 }

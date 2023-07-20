@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface CommentPublicService {
     List<CommentDto> getByEvent(Long eventId, PageRequest pageable);
+
     CommentDto getById(Long commentId);
 }
