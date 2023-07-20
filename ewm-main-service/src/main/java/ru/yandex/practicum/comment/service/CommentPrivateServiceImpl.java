@@ -40,7 +40,7 @@ public class CommentPrivateServiceImpl implements CommentPrivateService {
 
     @Override
     public CommentDto update(Long userId, Long commentId, NewCommentDto newCommentDto) {
-        if(!commentRepository.isAuthor(userId, commentId)) {
+        if (!commentRepository.isAuthor(userId, commentId)) {
             throw new NotFoundException("Comment with this parameters wasn't found");
         }
 
@@ -52,10 +52,9 @@ public class CommentPrivateServiceImpl implements CommentPrivateService {
 
     @Override
     public void delete(Long userId, Long commentId) {
-        if(!commentRepository.isAuthor(userId, commentId)) {
+        if (!commentRepository.isAuthor(userId, commentId)) {
             throw new NotFoundException("Comment with this parameters wasn't found");
         }
-        
         commentRepository.deleteById(commentId);
     }
 
