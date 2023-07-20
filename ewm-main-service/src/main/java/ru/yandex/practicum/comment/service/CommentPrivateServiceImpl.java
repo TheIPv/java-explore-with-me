@@ -9,7 +9,6 @@ import ru.yandex.practicum.comment.mapper.CommentMapper;
 import ru.yandex.practicum.comment.model.Comment;
 import ru.yandex.practicum.comment.repository.CommentRepository;
 import ru.yandex.practicum.event.service.EventPublicService;
-import ru.yandex.practicum.exception.ForbiddenException;
 import ru.yandex.practicum.exception.NotFoundException;
 import ru.yandex.practicum.user.service.UserService;
 
@@ -41,7 +40,9 @@ public class CommentPrivateServiceImpl implements CommentPrivateService {
 
     @Override
     public CommentDto update(Long userId, Long commentId, NewCommentDto newCommentDto) {
-        isAuthor(userId, commentId);
+        if(!commentRepository.isAuthor(userId, commentId)) {
+            throw new NotFoundException("Comment with this parameters wasn't found");
+        }
 
         Comment comment = commentRepository.findById(commentId).get();
         comment.setText(newCommentDto.getText());
@@ -51,18 +52,11 @@ public class CommentPrivateServiceImpl implements CommentPrivateService {
 
     @Override
     public void delete(Long userId, Long commentId) {
-        isAuthor(userId, commentId);
+        if(!commentRepository.isAuthor(userId, commentId)) {
+            throw new NotFoundException("Comment with this parameters wasn't found");
+        }
+        
         commentRepository.deleteById(commentId);
     }
 
-    private void isAuthor(Long userId, Long commentId) {
-        Comment comment = commentRepository.findById(commentId)
-                .orElseThrow(() -> new NotFoundException("Comment with ID " + commentId
-                        + "wasn't found"));
-
-        if (!comment.getAuthor().getId().equals(userId)) {
-            throw new ForbiddenException("User with ID " + commentId
-                    + " isn't author of comment with ID" + commentId);
-        }
-    }
 }
